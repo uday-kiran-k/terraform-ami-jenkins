@@ -1,6 +1,6 @@
 variable "aws_access_key" {
   type    = string
-  default = env("AWS_DEV_ACCESS_KEY")
+  default = env("AWS_GH_ACCESS_KEY")
 }
 
 variable "aws_region" {
@@ -10,17 +10,17 @@ variable "aws_region" {
 
 variable "aws_secret_key" {
   type    = string
-  default = env("AWS_DEV_SECRET_KEY")
+  default = env("AWS_GH_ACCESS_VAL")
 }
 
 variable "demo_account_id" {
   type    = list(string)
-  default = [env("AWS_DEMO_ACCOUNT_ID")]
+  default = [env("AWS_UK_DEMO_ACCOUNT_ID"), env("AWS_PG_DEMO_ACCOUNT_ID"), env("AWS_BM_DEMO_ACCOUNT_ID")]
 }
 
 variable "source_ami" {
   type    = string
-  default = "ami-053b0d53c279acc90"
+  default = env("AWS_JENKINS_SOURCE_AMI")
 }
 
 variable "ssh_username" {
@@ -30,7 +30,7 @@ variable "ssh_username" {
 
 variable "subnet_id" {
   type    = string
-  default = "subnet-0bbd28ae620678baf"
+  default = env("AWS_GH_DEV_SUBNET_ID")
 }
 # "timestamp" template function replacement
 locals { timestamp = regex_replace(timestamp(), "[- TZ:]", "") }
