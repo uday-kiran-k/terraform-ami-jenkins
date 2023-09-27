@@ -21,7 +21,7 @@ sudo apt-get install caddy -y
 
 sudo chmod 646 /etc/caddy/Caddyfile
 cat <<EOF >> /etc/caddy/Caddyfile
-jenkins.ganeshvasa.me {
+jenkins.ganeshvasa.me, jenkins.banishmg.me, jenkins.udaykk.me {
     reverse_proxy localhost:8080
 }
 EOF
