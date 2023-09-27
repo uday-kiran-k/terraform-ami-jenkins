@@ -1,4 +1,4 @@
-name: Build AMI
+name: Build JENKINS AMI
 
 on:
   push:
@@ -27,10 +27,10 @@ jobs:
         env:
           AWS_DEV_ACCESS_KEY: ${{ secrets.AWS_GH_ACCESS_KEY }}
           AWS_DEV_SECRET_KEY: ${{ secrets.AWS_GH_ACCESS_VAL }}
-          AWS_DEV_SUBNET_ID: ${{ secrets.AWS_GH_DEV_SUBNET_ID }} #subnet-04c72e4d3f4a340ac
+          AWS_DEV_SUBNET_ID: ${{ secrets.AWS_GH_DEV_SUBNET_ID }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
-          SOURCE_AMI: ${{ secrets.AWS_JENKINS_SOURCE_AMI }} #ami-053b0d53c279acc90
-          AWS_DEMO_ACCOUNT_ID: ${{ secrets.AWS_UK_DEMO_ACCOUNT_ID }} #545141298702
+          SOURCE_AMI: ${{ secrets.AWS_JENKINS_SOURCE_AMI }}
+          AWS_DEMO_ACCOUNT_ID: ${{ secrets.AWS_UK_DEMO_ACCOUNT_ID }} 
 
 
       - name: Set up AWS CLI
@@ -38,11 +38,4 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_GH_ACCESS_KEY }}
           aws-secret-access-key: ${{ secrets.AWS_GH_ACCESS_VAL }}
-          aws-region: us-east-1
-
-      
-      # - name: Build AMI
-      #   uses: hashicorp/packer@v1
-      #   with:
-      #     build_path: .
-      #     template: packer/jenkins-ami.json
+          aws-region: ${{ secrets.AWS_REGION }}
