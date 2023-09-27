@@ -2,8 +2,7 @@ name: Build JENKINS AMI
 
 on:
   pull_request:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   build-ami:
